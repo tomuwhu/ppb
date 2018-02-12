@@ -1,4 +1,4 @@
-menu = [ 'Madár', 'Kutya' ]
+menu = [ 'Delfin', 'Kutya','Farkas', 'Pingvin','Hello világ!', 'Krokodil' ].sort()
 angular
   .module( 'a', ['ngRoute'] )
   .config($routeProvider => {

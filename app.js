@@ -17,7 +17,8 @@ var üzenet_a_szerverről = `Heló világ`
 app.get( '/', (req, res) => res.sendFile('index.html', frontend) )
 app.get( '/backend', (req, res) => res.sendFile('main.html', frontend) )
 app.get( '/backend/:id', (req, res) => {
-    res.send(`
+    if (req.params.id == 2) res.sendFile('main.html', frontend)
+    else res.send(`
         <br><i>Péda back-end templating</i>
         <div class="w3-center">
           Kiválasztott menüpont:
