@@ -20,7 +20,13 @@ app.get( '/backend/:id', (req, res) => {
     res.send(`
         <br>
         <div class="w3-center">
-        Kiválasztott menüpont: {{menu[${req.params.id}]}}<br><hr><input ng-model='x' /><br><hr>{{x}} {{x}} {{x}} ${üzenet_a_szerverről}!<br><hr><br>
+          Kiválasztott menüpont:
+          <b>{{menu[${req.params.id}]}}</b>
+          <br><hr>
+          <input ng-model='x' />
+          <br><hr>{{x}} {{x}} {{x}}
+          <i>${üzenet_a_szerverről}!</i>
+          <br><hr><br>
         </div>
     `)
 })
