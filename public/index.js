@@ -1,12 +1,9 @@
-menu = [
-  { menupont: 'Madár', link: 'csirke'},
-  { menupont: 'Kutya', link: 'kutya'},
-]
+menu = [ 'Madár', 'Kutya' ]
 angular
   .module( 'a', ['ngRoute'] )
   .config($routeProvider => {
-      menu.forEach( v => {
-        $routeProvider.when('/'+v.link, { templateUrl : "/backend/"+v.link})
+      menu.forEach( (v, k) => {
+        $routeProvider.when('/'+k, { templateUrl : "/backend/"+k})
       })
       $routeProvider.when("/", { templateUrl : "/backend" })
   })

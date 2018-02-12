@@ -12,11 +12,17 @@ app .use(bodyParser.json()).use(cookieParser())
 mongoose.connect('mongodb://localhost/'+dbname, { useMongoClient: true })
 mongoose.Promise = global.Promise
 
+var üzenet_a_szerverről = `Heló világ`
 // router redirect
 app.get( '/', (req, res) => res.sendFile('index.html', frontend) )
 app.get( '/backend', (req, res) => res.sendFile('main.html', frontend) )
 app.get( '/backend/:id', (req, res) => {
-    res.send(req.params.id+"<br><input ng-model='x' /><br> {{x}} {{x}} {{x}}")
+    res.send(`
+        <br>
+        <div class="w3-center">
+        Kiválasztott menüpont: {{menu[${req.params.id}]}}<br><hr><input ng-model='x' /><br><hr>{{x}} {{x}} {{x}} ${üzenet_a_szerverről}!<br><hr><br>
+        </div>
+    `)
 })
 
 app.listen(3000)
