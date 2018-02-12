@@ -13,18 +13,18 @@ mongoose.connect('mongodb://localhost/'+dbname, { useMongoClient: true })
 mongoose.Promise = global.Promise
 
 var üzenet_a_szerverről = `Heló világ`
-// router redirect
+
 app.get( '/', (req, res) => res.sendFile('index.html', frontend) )
 app.get( '/backend', (req, res) => res.sendFile('main.html', frontend) )
 app.get( '/backend/:id', (req, res) => {
     res.send(`
-        <br>
+        <br><i>Péda back-end templating</i>
         <div class="w3-center">
           Kiválasztott menüpont:
           <b>{{menu[${req.params.id}]}}</b>
           <br><hr>
           <input ng-model='x' />
-          <br><hr>{{x}} {{x}} {{x}}
+          <br><hr>{{x}} {{x}} {{x}}<br><hr>
           <i>${üzenet_a_szerverről}!</i>
           <br><hr><br>
         </div>
