@@ -1,4 +1,4 @@
-var dbname="ppb", //database name (collections --> users, subjects, days)
+var dbname="ppb", //database name (collections --> ?)
     express = require('express'), bodyParser = require('body-parser'),
     frontend={ root: __dirname+'/frontend' },
     cookieParser = require('cookie-parser'),
