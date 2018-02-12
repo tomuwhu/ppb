@@ -16,12 +16,14 @@
           <a class="w3-bar-item w3-button w3-text-black" ng-repeat="menuelem in menu" ng-href="#!/{{menuelem.link}}">{{menuelem.menupont}}</a>
       </div>
     </div>
-
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right"><i class="fa fa-search"></i></a>
     <input class="w3-bar-item w3-hide-small w3-right">
+    <div class="w3-bar-item w3-right">{{time | date: 'h: mm: ss'}}</div>
   </div>
-  <div style='height:15px;'></div>
-  <div ng-view class="w3-container"></div>
-  <div style='height:15px;'></div>
+  <div class="w3-container w3-gray">
+    <div style='height:15px;'></div>
+    <div ng-view class="w3-container w3-white  w3-round-large"></div>
+    <div style='height:15px;'></div>
+  </div>
 </body>
 </html>

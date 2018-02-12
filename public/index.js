@@ -10,7 +10,7 @@ angular
       })
       $routeProvider.when("/", { templateUrl : "/backend" })
   })
-  .controller( 'c', ($scope,$http) => {
-      $scope.x=1
+  .controller( 'c', ($scope,$http,$interval) => {
+      $interval( () => $scope.time = new Date(), 100)
       $scope.menu = menu
   } )
