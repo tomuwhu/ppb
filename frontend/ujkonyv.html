@@ -1,0 +1,32 @@
+<div class="encenterem">
+  <br>
+  <h2 class="enh2om w3-round">Új könyv felvitele</h2>
+  <br>
+  <div ng-if="ujkonyvmenteve==0" class="f1 w3-container w3-round-large w3-brown">
+    <div class="pici"></div>
+    <form class="w3-container w3-round-large w3-brown">
+        <input ng-model="k.cim"     placeholder="Cím">
+        <div class="pici"></div>
+        <input ng-model="k.szerzo"  placeholder="Szerző">
+        <div class="pici"></div>
+        <input ng-model="k.kiado"   placeholder="Kiadó">
+        <div class="pici"></div>
+        <input ng-model="k.evszam"
+               type="number"        placeholder="Évszám">
+        <div class="pici"></div>
+        <input ng-model="k.mufaj"   placeholder="Téma/Műfaj">
+        <div class="pici"></div>
+        <input ng-model="k.holvan"  placeholder="Holvan">
+        <div class="pici"></div>
+        <button class="w3-button" ng-click="kkuld()">Mentés</button>
+    </form>
+    <div class="pici"></div>
+  </div>
+  <div ng-if="ujkonyvmenteve==1" class="f1 w3-container w3-round-large w3-green">
+      <div class="pici"></div>
+        Újkönyv adatai elmentve!<br><br>
+        <a href='#!'>Vissza a kezdőlapra</a>
+      <div class="pici"></div>
+  </div>
+  <div class="pici"></div>
+</div>

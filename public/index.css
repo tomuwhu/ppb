@@ -1,0 +1,23 @@
+.f1 {
+    width:  350px;
+    margin: 0 auto;
+}
+div.pici {
+    height: 15px;
+}
+.encenterem {
+    text-align: center;
+    color: #51ebf3;
+}
+.enh2om {
+    width:  350px;
+    font-weight: bold;
+    background-color: #906090;
+    margin: 0 auto;
+}
+.d {
+    text-align:left;
+    padding:5px;
+    background-color: #123456;
+    color: #fedcab;
+}

@@ -5,6 +5,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-route.min.js"></script>
 <script src="index.js"></script>
+<link rel="stylesheet" href="index.css">
 <body ng-app="a" ng-controller="c">
   <div class="w3-bar w3-dark-grey">
     <a href='/' class="w3-bar-item w3-button w3-black">Kezdőlap</a>
@@ -21,7 +22,10 @@
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right">
         <i class="fa fa-search"></i>
     </a>
-    <input class="w3-bar-item w3-hide-small w3-right" placeholder='keresés az oldalon'>
+    <input  class="w3-bar-item w3-hide-small w3-right"
+            placeholder='könyv keresése'
+            ng-model='keresomezo'
+            ng-keyup='keres()'>
     <div class="w3-bar-item w3-right">{{time | date: 'h: mm: ss'}}</div>
   </div>
   <div class="w3-container w3-gray">

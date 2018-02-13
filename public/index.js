@@ -1,4 +1,4 @@
-menu = [ 'Delfin', 'Kutya','Farkas', 'Pingvin','Hello világ!', 'Krokodil' ].sort()
+menu = [ 'Új könyv adatainak rögzítése' ]
 angular
   .module( 'a', ['ngRoute'] )
   .config($routeProvider => {
@@ -6,7 +6,25 @@ angular
       $routeProvider.when("/", { templateUrl : "/backend" })
   })
   .controller( 'c', ($scope,$http,$interval) => {
+      $scope.ujkonyvmenteve = 0
+      $scope.konyvek = []
+      $scope.k = {}
       $interval( () => $scope.time = new Date(), 100)
       $scope.menu = menu
-      $scope.x = 5
+      $scope.x = 2
+      $scope.kkuld = () => {
+          $http
+            .post("ujkonyv",$scope.k)
+            .then( res => {
+                $scope.ujkonyvmenteve = res.data.ok
+            })
+      }
+      $scope.keres = () => {
+        $scope.ujkonyvmenteve = 0
+        $http
+          .post("keres",{mitkeres: $scope.keresomezo})
+          .then( res => {
+              $scope.konyvek=res.data.konyvek
+          })
+      }
   } )
