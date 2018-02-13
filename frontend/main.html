@@ -2,18 +2,22 @@
   <br>
   <h1>Üdvözlöm a Könyvkuckó házikönyvtár alkalmazásban!</h1>
   <br>
-  <div ng-repeat="konyv in konyvek">
-    <div class="w3-container w3-row w3-black w3-round-large klikk"
+  <div class="w3-container" ng-repeat="konyv in konyvek">
+    <div class="w3-container w3-orange w3-row klikk w3-round-large"
          ng-click="open=konyv._id">
-      <div class="w3-third d">{{konyv.szerzo}}</div>
-      <div class="w3-third d">{{konyv.cim}}</div>
-      <div class="w3-third d">{{konyv.holvan}}</div>
-    <div>
-    <div class="w3-container w3-row w3-gray"
-         ng-if="open==konyv._id">
-         <div class="w3-third d2">&nbsp;{{konyv.mufaj}}</div>
-         <div class="w3-third d2">&nbsp;{{konyv.kiado}}</div>
-         <div class="w3-flex d2">&nbsp; &nbsp; {{konyv.evszam}}</div>
+        <div class="pici"></div>
+        <div class="w3-container w3-round-xxlarge w3-row w3-white">
+          <div class="w3-third d">{{konyv.szerzo}}</div>
+          <div class="w3-third d">{{konyv.cim}}</div>
+          <div class="w3-third d">{{konyv.holvan}}</div>
+        </div>
+        <div class="w3-container w3-row w3-orange"
+             ng-if="open==konyv._id">
+             <div class="w3-third d2">&nbsp;{{konyv.mufaj}}</div>
+             <div class="w3-third d2">&nbsp;{{konyv.kiado}}</div>
+             <div class="w3-flex d2">&nbsp; &nbsp; {{konyv.evszam}}</div>
+        </div>
+        <div class="pici"></div>
     </div>
   </div>
 </div>
