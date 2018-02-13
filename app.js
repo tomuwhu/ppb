@@ -26,11 +26,17 @@ app.get( '/backend/:id', (req, res) => {
           Front-end templating:<br><br>
           <input type='range' min=1 max=20 ng-model='x' />
           <br><hr>{{x-1}} - {{x}} - {{x-1+2}}<br><hr>
+          <div ng-include="'/incl'"></div>
           Kiválasztott menüpont (vegyes templating):
           <b>{{menu[${req.params.id}]}}</b>
           <br><hr><br>
         </div>
     `)
 })
-
+app.get( '/incl', (req, res) => {
+    szerverről = "Ez"
+    res.send(`
+        <b>${szerverről} megy.</b>
+    `)
+})
 app.listen(3001)
