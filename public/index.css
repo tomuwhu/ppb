@@ -21,3 +21,9 @@ div.pici {
     background-color: #123456;
     color: #fedcab;
 }
+.d2 {
+    text-align:left;
+}
+.klikk {
+    cursor: pointer;
+}
