@@ -20,13 +20,13 @@ app.get( '/backend/:id', (req, res) => {
     if (req.params.id == 2) res.sendFile('main.html', frontend)
     else res.send(`
         <div class="w3-center">
-          <br><i>Péda back-end templating:</i><b>${req.params.id}</b><br>
+          <br><i>Péda back-end templating:</i> <b>${req.params.id}</b><br>
           <i>${üzenet_a_szerverről}!</i><br>
           <br><hr>
           Front-end templating:<br><br>
           <input type='range' min=1 max=20 ng-model='x' />
           <br><hr>{{x-1}} - {{x}} - {{x-1+2}}<br><hr>
-          Kiválasztott menüpont (vegyes):
+          Kiválasztott menüpont (vegyes templating):
           <b>{{menu[${req.params.id}]}}</b>
           <br><hr><br>
         </div>
