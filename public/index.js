@@ -8,4 +8,5 @@ angular
   .controller( 'c', ($scope,$http,$interval) => {
       $interval( () => $scope.time = new Date(), 100)
       $scope.menu = menu
+      $scope.x = 5
   } )
