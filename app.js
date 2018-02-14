@@ -12,8 +12,6 @@ app .use(bodyParser.json()).use(cookieParser())
 mongoose.connect('mongodb://localhost/'+dbname, { useMongoClient: true })
 mongoose.Promise = global.Promise
 
-var üzenet_a_szerverről = `Heló világ`
-
 app.get( '/', (req, res) => res.sendFile('index.html', frontend) )
 app.get( '/backend', (req, res) => res.sendFile('main.html', frontend) )
 app.get( '/backend/:id', (req, res) => {
@@ -25,7 +23,7 @@ app.get( '/backend/:id', (req, res) => {
         res.send('Szevasz tavasz')
         break
     case '7':
-        res.send('Namosmávan7-es')
+        res.sendFile('file7.html', frontend)
         break
     default:
         res.send('Hiba: nincs ilyen tartalom!')
@@ -49,7 +47,8 @@ app.post( '/keres', (req,res) => {
         .find({
             $or: [
                 { cim: new RegExp('^.*'+req.body.mitkeres+'.*$', "i") },
-                { szerzo: new RegExp('^.*'+req.body.mitkeres+'.*$', "i") }
+                { szerzo: new RegExp('^.*'+req.body.mitkeres+'.*$', "i") },
+                { mufaj: new RegExp('^.*'+req.body.mitkeres+'.*$', "i") }  
             ]
         })
         .sort({cim: -1})

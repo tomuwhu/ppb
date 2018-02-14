@@ -18,6 +18,7 @@ angular
             .post("ujkonyv",$scope.k)
             .then( res => {
                 $scope.ujkonyvmenteve = res.data.ok
+                $scope.k = {}
             })
       }
       $scope.keres = () => {
