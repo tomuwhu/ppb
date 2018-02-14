@@ -21,6 +21,12 @@ app.get( '/backend/:id', (req, res) => {
     case '0':
         res.sendFile('ujkonyv.html', frontend)
         break
+    case '1':
+        res.send('Szevasz tavasz')
+        break
+    case '7':
+        res.send('Namosmávan7-es')
+        break
     default:
         res.send('Hiba: nincs ilyen tartalom!')
     }

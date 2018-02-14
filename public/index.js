@@ -1,8 +1,9 @@
-menu = [ 'Új könyv adatainak rögzítése' ]
+menu = [ 'Új könyv adatainak rögzítése','Új menüpont' ]
 angular
   .module( 'a', ['ngRoute'] )
   .config($routeProvider => {
       menu.forEach( (v, k) => $routeProvider.when('/'+k, { templateUrl : "/backend/"+k}) )
+      $routeProvider.when("/7", { templateUrl : "/backend/7" })
       $routeProvider.when("/", { templateUrl : "/backend" })
   })
   .controller( 'c', ($scope,$http,$interval) => {
