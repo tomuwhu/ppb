@@ -24,7 +24,7 @@ app.get( '/backend/:id', (req, res) => {
           <br><i>Péda back-end templating:</i> <b>${vt[req.params.id%6]}!</b><br>
           <br><i>Péda back-end templating + AJAX:</i> <span ng-include="'/incl'"></span><hr>
           Front-end templating:<br><br>
-          <input type='range' min=1 max=20 ng-model='x' />
+          <input ng-model='x' />
           <br><hr>{{x-1}} - {{x}} - {{x-1+2}}<br><hr>
           Kiválasztott menüpont (vegyes templating):
           <b>{{menu[${req.params.id}]}}</b>
