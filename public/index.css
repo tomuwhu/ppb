@@ -43,7 +43,7 @@ a {
   padding: 4px;
   width: 100%;
 }
-.kl:hover {
+tr.kl:hover {
   box-shadow: 1px 1px 7px black;
 }
 td.w3 {

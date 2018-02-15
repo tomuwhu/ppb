@@ -3,7 +3,7 @@
   <h1>Üdvözlöm a Könyvkuckó házikönyvtár alkalmazásban!</h1>
   <br>
   <table class="w3-table w3-striped">
-    <tr ng-repeat="(key,konyv) in konyvek" class='klikk' title='{{konyv.mufaj}} - {{konyv.kiado}} - {{konyv.evszam}}'>
+    <tr ng-repeat="(key,konyv) in konyvek" class='klikk kl' title='{{konyv.mufaj}} - {{konyv.kiado}} - {{konyv.evszam}}'>
             <td ng-click="edit(key)" class='w3'>
                 <a href='#!0'><div class='kl'>{{konyv.szerzo}}&nbsp;</div></a>
             </td>
