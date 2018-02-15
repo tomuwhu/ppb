@@ -21,11 +21,16 @@
         <div class="pici"></div>
         <input ng-model="k.mufaj"   placeholder="Téma/Műfaj" class="w3-input">
         <div class="pici"></div>
-        <label>Kölcsönadva</label>
-        <input  ng-model="k.evittek"
-                type="checkbox"
-                placeholder="Mikor hozzák vissza"
-                class="w3-input">
+        <div class="w3-brown w3-round-large w3-center">
+          <div class="xpici"></div>
+          <label>Kölcsönadva:</label><center>
+          <input  style="width:20px;"
+                  ng-model="k.evittek"
+                  type="checkbox"
+                  placeholder="Mikor hozzák vissza"
+                  class="w3-input">
+          <div class="pici"></div>
+        </div>
         <div class="pici"></div>
         <input  ng-if="!k.evittek"
                 ng-model="k.holvan"
