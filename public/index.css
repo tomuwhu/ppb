@@ -36,10 +36,19 @@ div.xpici {
 .f2.ng-invalid {
     background-color: rgba(255,200,200,0.7);
 }
-a.kl {
+a {
   text-decoration: none;
-  padding: 4px;
 }
-a.kl:hover {
+.kl {
+  padding: 4px;
+  width: 100%;
+}
+.kl:hover {
   box-shadow: 1px 1px 7px black;
+}
+td.w3 {
+  width: 30%
+}
+td.w1 {
+  width: 10%
 }

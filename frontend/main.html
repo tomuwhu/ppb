@@ -4,12 +4,18 @@
   <br>
   <table class="w3-table w3-striped">
     <tr ng-repeat="(key,konyv) in konyvek" class='klikk' title='{{konyv.mufaj}} - {{konyv.kiado}} - {{konyv.evszam}}'>
-            <td ng-click="edit(key)"><a class='kl' href='#!0'>{{konyv.szerzo}}</a></td>
-            <td ng-click="edit(key)"><a class='kl' href='#!0'>{{konyv.cim}}</a></td>
-            <td ng-click="edit(key)"><a class='kl' href='#!0'>{{konyv.holvan}}</a></td>
-            <td>
+            <td ng-click="edit(key)" class='w3'>
+                <a href='#!0'><div class='kl'>{{konyv.szerzo}}&nbsp;</div></a>
+            </td>
+            <td ng-click="edit(key)" class='w3'>
+                <a href='#!0'><div class='kl'>{{konyv.cim}}&nbsp;</div></a>
+            </td>
+            <td ng-click="edit(key)" class='w3'>
+                <a href='#!0'><div class='kl'>{{konyv.holvan}}&nbsp;</div></a>
+            </td>
+            <td class='w1'>
               <div class="w3-cell w3-right d">
-                <i class="material-icons" ng-click="del(key)">&#xe16c;</i>
+                <i class="material-icons kl" ng-click="del(key)">&#xe16c;</i>
               </div>
             </td>
     </tr>

@@ -50,7 +50,7 @@ app.post( '/ujkonyv', (req,res) => {
               holvan: req.body.holvan,
               evszam: req.body.evszam,
               mikojonvissza: req.body.mikojonvissza,
-              evittek: req.body.evittek              
+              evittek: req.body.evittek
             })
             .exec((err,cucc) => {
               res.send({ok: 2})
@@ -62,7 +62,9 @@ app.post( '/keres', (req,res) => {
         .find({
             $or: [
                 { cim: new RegExp('^.*'+req.body.mitkeres+'.*$', "i") },
-                { szerzo: new RegExp('^.*'+req.body.mitkeres+'.*$', "i") }
+                { szerzo: new RegExp('^.*'+req.body.mitkeres+'.*$', "i") },
+                { mufaj: new RegExp('^.*'+req.body.mitkeres+'.*$', "i") },                
+                { holvan: new RegExp('^.*'+req.body.mitkeres+'.*$', "i") }
             ]
         })
         .sort({cim: -1})
