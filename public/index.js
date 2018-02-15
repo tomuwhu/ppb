@@ -1,8 +1,7 @@
-menu = [ 'Új könyv adatainak rögzítése' ]
 angular
   .module( 'a', ['ngRoute'] )
   .config($routeProvider => {
-      menu.forEach( (v, k) => $routeProvider.when('/'+k, { templateUrl : "/backend/"+k}) )
+      $routeProvider.when('/0', { templateUrl : "/backend/0" })
       $routeProvider.when("/", { templateUrl : "/backend" })
   })
   .controller( 'c', ($scope,$http,$interval) => {
@@ -14,7 +13,6 @@ angular
         //  d.setDate(d.getDate()+65)
           $scope.time = d
       } , 100)
-      $scope.menu = menu
       $scope.x = 2
       $scope.kkuld = () => {
           $http
@@ -24,7 +22,7 @@ angular
             })
       }
       $scope.keres = () => {
-        $scope.ujkonyvmenteve = 0
+        $scope.k = {}
         $http
           .post("keres",{mitkeres: $scope.keresomezo})
           .then( res => {
@@ -37,7 +35,13 @@ angular
 
           })
       }
+      $scope.uj = () => {
+          $scope.k = { }
+      }
       $scope.edit = key => {
           $scope.k = $scope.konyvek[key]
+      }
+      $scope.del = key => {
+        
       }
   } )
