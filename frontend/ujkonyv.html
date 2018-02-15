@@ -6,7 +6,7 @@
     <h2 class="enh2om w3-round"
         ng-if="!k._id" >Új könyv felvitele</h2>
     <h2 class="enh2om w3-round"
-        ng-if="k._id" >Könyv adatainak módosítása</h2>
+        ng-if="k._id" >Módosítás</h2>
     <div class="pici"></div>
     <form name='konyvform' class="w3-container w3-round-large f2">
         <div class="pici"></div>
@@ -21,9 +21,10 @@
         <div class="pici"></div>
         <input ng-model="k.mufaj"   placeholder="Téma/Műfaj" class="w3-input">
         <div class="pici"></div>
-        <div class="w3-brown w3-round-large w3-center">
+        <div class="w3-white"><center>
           <div class="xpici"></div>
-          <label>Kölcsönadva:</label><center>
+          <label>Kölcsönadva:</label>
+          <div class="xpici"></div>
           <input  style="width:20px;"
                   ng-model="k.evittek"
                   type="checkbox"

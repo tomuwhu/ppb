@@ -5,6 +5,7 @@ angular
       $routeProvider.when("/", { templateUrl : "/backend" })
   })
   .controller( 'c', ($scope,$http,$interval) => {
+      $scope.keresomezo=''
       $scope.ujkonyvmenteve = 0
       $scope.konyvek = []
       $scope.k = {}
@@ -42,6 +43,7 @@ angular
           $scope.k = $scope.konyvek[key]
       }
       $scope.del = key => {
-        
+
       }
+      $interval($scope.keres,100,1)
   } )

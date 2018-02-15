@@ -2,29 +2,17 @@
   <br>
   <h1>Üdvözlöm a Könyvkuckó házikönyvtár alkalmazásban!</h1>
   <br>
-  <div class="w3-container" ng-repeat="(key,konyv) in konyvek">
-    <div class="w3-container w3-orange w3-row klikk w3-round-large"
-         ng-click="open=konyv._id">
-        <div class="pici"></div>
-        <div class="w3-container w3-round-xxlarge w3-row w3-white">
-          <div class="w3-cell w3-third d">{{konyv.szerzo}}</div>
-          <div class="w3-cell w3-third d">{{konyv.cim}}</div>
-          <div class="w3-cell w3-flex d">{{konyv.holvan}}</div>
-          <div class="w3-cell w3-right d">
-            <a href='#!0'>
-              <i class="material-icons" ng-click="edit(key)">&#xe254;</i>
-            </a>
-              <i class="material-icons" ng-click="del(key)">&#xe16c;</i>
-          </div>
-        </div>
-        <div class="w3-container w3-row w3-orange"
-             ng-if="open==konyv._id">
-             <div class="w3-third d2">&nbsp;{{konyv.mufaj}}</div>
-             <div class="w3-third d2">&nbsp;{{konyv.kiado}}</div>
-             <div class="w3-flex d2">&nbsp; &nbsp; {{konyv.evszam}}</div>
-        </div>
-        <div class="pici"></div>
-    </div>
-  </div>
+  <table class="w3-table w3-striped">
+    <tr ng-repeat="(key,konyv) in konyvek" class='klikk' title='{{konyv.mufaj}} - {{konyv.kiado}} - {{konyv.evszam}}'>
+            <td ng-click="edit(key)"><a class='kl' href='#!0'>{{konyv.szerzo}}</a></td>
+            <td ng-click="edit(key)"><a class='kl' href='#!0'>{{konyv.cim}}</a></td>
+            <td ng-click="edit(key)"><a class='kl' href='#!0'>{{konyv.holvan}}</a></td>
+            <td>
+              <div class="w3-cell w3-right d">
+                <i class="material-icons" ng-click="del(key)">&#xe16c;</i>
+              </div>
+            </td>
+    </tr>
+  </table>
 </div>
 <div class="pici"></div>
