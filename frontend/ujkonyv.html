@@ -1,9 +1,12 @@
 <div class="encenterem">
   <br>
   <br>
-  <div ng-if="ujkonyvmenteve==0" class="f1 w3-container w3-round-large w3-brown">
+  <div class="f1 w3-container w3-round-large w3-brown">
     <div class="pici"></div>
-    <h2 class="enh2om w3-round">Új könyv felvitele</h2>
+    <h2 class="enh2om w3-round"
+        ng-if="!k._id" >Új könyv felvitele</h2>
+    <h2 class="enh2om w3-round"
+        ng-if="k._id" >Könyv adatainak módosítása</h2>
     <div class="pici"></div>
     <form name='konyvform' class="w3-container w3-round-large f2">
         <div class="pici"></div>
@@ -18,20 +21,37 @@
         <div class="pici"></div>
         <input ng-model="k.mufaj"   placeholder="Téma/Műfaj" class="w3-input">
         <div class="pici"></div>
-        <input ng-model="k.holvan"  placeholder="Holvan" class="w3-input" required>
+        <label>Kölcsönadva</label>
+        <input  ng-model="k.evittek"
+                type="checkbox"
+                placeholder="Mikor hozzák vissza"
+                class="w3-input">
         <div class="pici"></div>
+        <input  ng-if="!k.evittek"
+                ng-model="k.holvan"
+                placeholder="Holvan"
+                class="w3-input"
+                required>
+        <input  ng-if="k.evittek"
+                ng-model="k.holvan"
+                placeholder="Kinél van"
+                class="w3-input"
+                required>
+        <div class="pici"></div>
+        <input  ng-show = "k.evittek"
+                ng-model="k.mikojonvissza"
+                type="date"
+                placeholder="Mikor hozzák vissza"
+                class="w3-input">
+        <div class="pici"></div>
+        <a href="/">
         <button class="w3-button w3-round w3-white b1"
                 ng-click="kkuld()"
                 ng-if="konyvform.$valid">Mentés</button>
         <div class="pici"></div>
+        </a>
     </form>
     <div class="pici"></div>
-  </div>
-  <div ng-if="ujkonyvmenteve==1" class="f1 w3-container w3-round-large w3-green">
-      <div class="pici"></div>
-        Újkönyv adatai elmentve!<br><br>
-        <a href='#!'>Vissza a kezdőlapra</a>
-      <div class="pici"></div>
   </div>
   <div class="pici"></div>
 </div>

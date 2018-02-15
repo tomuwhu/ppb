@@ -9,7 +9,11 @@ angular
       $scope.ujkonyvmenteve = 0
       $scope.konyvek = []
       $scope.k = {}
-      $interval( () => $scope.time = new Date(), 100)
+      $interval( () => {
+          d = new Date()
+        //  d.setDate(d.getDate()+65)
+          $scope.time = d
+      } , 100)
       $scope.menu = menu
       $scope.x = 2
       $scope.kkuld = () => {
@@ -25,6 +29,15 @@ angular
           .post("keres",{mitkeres: $scope.keresomezo})
           .then( res => {
               $scope.konyvek=res.data.konyvek
+              $scope.konyvek.forEach( (v,k) => {
+                    if ( typeof $scope.konyvek[k].mikojonvissza !== 'undefined') {
+                        $scope.konyvek[k].mikojonvissza = new Date($scope.konyvek[k].mikojonvissza)
+                    }
+              })
+
           })
+      }
+      $scope.edit = key => {
+          $scope.k = $scope.konyvek[key]
       }
   } )

@@ -31,12 +31,31 @@ var Konyv = mongoose.model('konyv', {
   kiado:  {type: String, trim:true},
   mufaj:  {type: String, trim:true},
   holvan: {type: String, trim:true},
-  evszam: {type: Number}
+  evszam: {type: Number},
+  mikojonvissza: {type:Date},
+  evittek: {type: Boolean}
 })
 app.post( '/ujkonyv', (req,res) => {
-    var ujkonyv = new Konyv( req.body )
-    ujkonyv.save()
-    res.send({ok: 1})
+    if (!req.body._id) {
+      var ujkonyv = new Konyv( req.body )
+      ujkonyv.save()
+      res.send({ok: 1})
+    } else {
+      Konyv .findById(req.body._id)
+            .update({
+              cim: req.body.cim,
+              szerzo: req.body.szerzo,
+              kiado: req.body.kiado,
+              mufaj: req.body.mufaj,
+              holvan: req.body.holvan,
+              evszam: req.body.evszam,
+              mikojonvissza: req.body.mikojonvissza,
+              evittek: req.body.evittek              
+            })
+            .exec((err,cucc) => {
+              res.send({ok: 2})
+            } )
+    }
 } )
 app.post( '/keres', (req,res) => {
     Konyv
