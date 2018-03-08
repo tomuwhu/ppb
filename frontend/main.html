@@ -1,9 +1,30 @@
 <center><h3>Csapatok listája</h3>
 <div class="w3-center">
-      <div ng-repeat="csapat in csapatok">
-        <div class="w3-button" ng-click="aktcsapat=csapat.nev">{{csapat.nev}}</div>
-        <div ng-show="aktcsapat==csapat.nev" ng-repeat="jatekos in csapat.jatekosok">
-            {{jatekos.mezszam}}: {{jatekos.nev}}
-        </div>
-      </div>
+      <div ng-repeat="csapati in csapatok track by $index">
+        <table  class="w3-striped w3-red"
+                style="margin: 0 auto;">
+        <tr>
+          <td ng-click="setaktcsapat( csapati.nev )"
+              style="width:300px; text-align:left;"
+              class="pointer">
+            {{csapati.nev}} &#8681;
+          </td>
+          <td class="pointer"
+              style="width:30px; text-align:center;">
+          <a ng-href="#!/ujcsapat" style="text-decoration: none;">
+            <span ng-click="setcsap(csapati)"
+                  style="font-size:160%;">&#9998;</span>
+          </a>
+          </td>
+        </tr>
+      </table>
+      <table  class="w3-striped w3-pale-yellow"
+              style="margin: 0 auto;">
+        <tr ng-show="aktcsapat==csapati.nev"
+            ng-repeat="jatekos in csapati.jatekosok">
+            <td style="width:30px; height:30px; vertical-align:middle;">{{jatekos.mezszam}}</td>
+            <td style="width:300px; height:30px; vertical-align:middle; text-align:left;"> &nbsp; {{jatekos.nev}}</td>
+        </tr>
+     </table>
+   </div>
 </div>

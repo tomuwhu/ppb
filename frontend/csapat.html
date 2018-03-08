@@ -1,11 +1,14 @@
-<center><h3>Új csapat rögzítése</h3>
+<center>
+  <h3 ng-if="ujcsapat">Új csapat rögzítése</h3>
+  <h3 ng-if="!ujcsapat">Csapat adatainak módosítása</h3>
 <form name="csapatform">
   <input placeholder="Csapat neve" ng-model="csapat.nev">
-  <br>
+  <hr>
   <div ng-repeat="jatekos in csapat.jatekosok track by $index">
     <input placeholder="Mezszám" ng-model="jatekos.mezszam">
     <input placeholder="Név" ng-model="jatekos.nev" ng-lostfocus="uj()">
   </div>
+  <hr>
   <button ng-click="uj()">Új játékos</button>
   <hr>
   <a href="#!/">

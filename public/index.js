@@ -8,6 +8,8 @@ angular
   .controller( 'c', ($scope,$http,$interval) => {
       $interval( () => $scope.time = new Date(), 100)
       $scope.csapatok = []
+      kezdomezszam = 1
+      $scope.esemenyek=[{}]
       $scope.mitkeres=""
       $scope.keress = () => {
         $http
@@ -17,11 +19,6 @@ angular
           })
       }
       $scope.keress()
-      kezdomezszam = 1
-      $scope.csapat = {
-          nev : '',
-          jatekosok : []
-      }
       $scope.uj = () => {
             $scope.csapat.jatekosok.push({
                 mezszam: kezdomezszam++,
@@ -35,5 +32,14 @@ angular
                   if (resp.data.ok) $scope.csapatok.push($scope.csapat)
               })
       }
-      $scope.esemenyek=[{}]
+      $scope.setcsap = (x = { nev : '', jatekosok : [] }) => {
+          $scope.csapat = x
+          if (x.nev == '') $scope.ujcsapat = true
+          else $scope.ujcsapat = false
+      }
+      $scope.setaktcsapat = (x) => {
+         if ($scope.aktcsapat != x) $scope.aktcsapat = x
+         else $scope.aktcsapat = null
+
+      }
   } )

@@ -29,14 +29,16 @@ var Csapat = mongoose.model('csapat', {
 })
 
 app.post( '/backend/csapatment', (req, res) => {
-    console.log(req.body)
-    var ujcsapat = new Csapat(req.body)
-    ujcsapat.save()
-    res.send({ok: 1})
+    if (req.body._id) {
+      console.log("modosítás")
+    } else {
+      var ujcsapat = new Csapat(req.body)
+      ujcsapat.save()
+      res.send({ok: 1})
+    }
 } )
 
 app.post( '/backend/csapatok', (req, res) => {
-    console.log(req.body)
     Csapat
         .find({ nev: new RegExp('^.*'+req.body.csnsz+'.*$', "i") } )
         .sort({cim: -1})
@@ -45,46 +47,5 @@ app.post( '/backend/csapatok', (req, res) => {
             res.send({csapatok: arr})
         } )
 } )
-
-/*
-app.post( '/ujkonyv', (req,res) => {
-    if (!req.body._id) {
-      var ujkonyv = new Konyv( req.body )
-      ujkonyv.save()
-      res.send({ok: 1})
-    } else {
-      Konyv .findById(req.body._id)
-            .update({
-              cim: req.body.cim,
-              szerzo: req.body.szerzo,
-              kiado: req.body.kiado,
-              mufaj: req.body.mufaj,
-              holvan: req.body.holvan,
-              evszam: req.body.evszam,
-              mikojonvissza: req.body.mikojonvissza,
-              evittek: req.body.evittek
-            })
-            .exec((err,cucc) => {
-              res.send({ok: 2})
-            } )
-    }
-} )
-app.post( '/keres', (req,res) => {
-    Konyv
-        .find({
-            $or: [
-                { cim: new RegExp('^.*'+req.body.mitkeres+'.*$', "i") },
-                { szerzo: new RegExp('^.*'+req.body.mitkeres+'.*$', "i") },
-                { mufaj: new RegExp('^.*'+req.body.mitkeres+'.*$', "i") },
-                { holvan: new RegExp('^.*'+req.body.mitkeres+'.*$', "i") }
-            ]
-        })
-        .sort({cim: -1})
-        .limit(15)
-        .exec((err,arr) => {
-            res.send({konyvek: arr})
-        } )
-} )
-*/
 
 app.listen(3001)
