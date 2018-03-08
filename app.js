@@ -1,4 +1,4 @@
-var dbname="ppb", //database name (collections --> ?)
+var dbname="spny", //database name spny (collections --> csapats)
     express = require('express'), bodyParser = require('body-parser'),
     frontend={ root: __dirname+'/frontend' },
     cookieParser = require('cookie-parser'),
@@ -29,7 +29,8 @@ var Csapat = mongoose.model('csapat', {
 
 app.post( '/backend/csapatment', (req, res) => {
     console.log(req.body)
-    //var ujjcsapat = new 
+    var ujcsapat = new Csapat(req.body)
+    ujcsapat.save()
     res.send({ok: 1})
 } )
 
