@@ -29,7 +29,8 @@ angular
             $http
               .post("/backend/csapatment", $scope.csapat)
               .then( resp => {
-                  if (resp.data.ok) $scope.csapatok.push($scope.csapat)
+                  $scope.csapat.jatekosok.sort( (a,b) => a.mezszam > b.mezszam ? -1 : 1 )
+                  if (resp.data.ok==1) $scope.csapatok.push($scope.csapat)
               })
       }
       $scope.setcsap = (x = { nev : '', jatekosok : [] }) => {

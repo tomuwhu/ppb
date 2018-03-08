@@ -27,10 +27,16 @@ var Csapat = mongoose.model('csapat', {
         nev: {type: String, trim:true}
     }]
 })
-
 app.post( '/backend/csapatment', (req, res) => {
     if (req.body._id) {
-      console.log("modosítás")
+      Csapat.findById(req.body._id)
+            .update({
+              nev:  req.body.nev,
+              jatekosok: req.body.jatekosok
+            })
+            .exec((err,cucc) => {
+              res.send({ok: 2})
+            } )
     } else {
       var ujcsapat = new Csapat(req.body)
       ujcsapat.save()
@@ -41,7 +47,7 @@ app.post( '/backend/csapatment', (req, res) => {
 app.post( '/backend/csapatok', (req, res) => {
     Csapat
         .find({ nev: new RegExp('^.*'+req.body.csnsz+'.*$', "i") } )
-        .sort({cim: -1})
+        .sort({ nev: -1})
         .limit(10)
         .exec((err,arr) => {
             res.send({csapatok: arr})
