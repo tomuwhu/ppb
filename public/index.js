@@ -35,4 +35,5 @@ angular
                   if (resp.data.ok) $scope.csapatok.push($scope.csapat)
               })
       }
+      $scope.esemenyek=[{}]
   } )
