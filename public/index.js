@@ -7,11 +7,15 @@ angular
   .controller( 'c', ($scope,$http,$interval) => {
       $interval( () => $scope.time = new Date(), 100)
       $scope.csapatok = []
-      $http
-        .post("/backend/csapatok", {csnsz: ''})
-        .then( resp => {
-              $scope.csapatok = resp.data.csapatok
-        })
+      $scope.mitkeres=""
+      $scope.keress = () => {
+        $http
+          .post("/backend/csapatok", {csnsz: $scope.mitkeres})
+          .then( resp => {
+                $scope.csapatok = resp.data.csapatok
+          })
+      }
+      $scope.keress()
       kezdomezszam = 1
       $scope.csapat = {
           nev : '',
