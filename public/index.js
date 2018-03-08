@@ -6,6 +6,12 @@ angular
   })
   .controller( 'c', ($scope,$http,$interval) => {
       $interval( () => $scope.time = new Date(), 100)
+      $scope.csapatok = []
+      $http
+        .post("/backend/csapatok", {csnsz: ''})
+        .then( resp => {
+              $scope.csapatok = resp.data.csapatok
+        })
       kezdomezszam = 1
       $scope.csapat = {
           nev : '',

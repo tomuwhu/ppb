@@ -1,3 +1,8 @@
 <div class="w3-center">
-  Hello világ!
+      <div ng-repeat="csapat in csapatok">
+        <div class="w3-button" ng-click="aktcsapat=csapat.nev">{{csapat.nev}}</div>
+        <div ng-show="aktcsapat==csapat.nev" ng-repeat="jatekos in csapat.jatekosok">
+            {{jatekos.mezszam}}: {{jatekos.nev}}
+        </div>
+      </div>
 </div>

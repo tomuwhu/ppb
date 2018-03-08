@@ -20,11 +20,11 @@ app.get( '/backend/ujcsapat', (req, res) => res.sendFile('csapat.html', frontend
 
 
 var Csapat = mongoose.model('csapat', {
-  nev:        {type: String, trim:true},
-  jatekosok:   [{
-      mezszam: Number,
-      nev: {type: String, trim:true}
-  }]
+    nev:         {type: String, trim:true},
+    jatekosok:   [{
+        mezszam: Number,
+        nev: {type: String, trim:true}
+    }]
 })
 
 app.post( '/backend/csapatment', (req, res) => {
@@ -32,6 +32,17 @@ app.post( '/backend/csapatment', (req, res) => {
     var ujcsapat = new Csapat(req.body)
     ujcsapat.save()
     res.send({ok: 1})
+} )
+
+app.post( '/backend/csapatok', (req, res) => {
+    console.log(req.body)
+    Csapat
+        .find({ nev: new RegExp('^.*'+req.body.csnsz+'.*$', "i") } )
+        .sort({cim: -1})
+        .limit(10)
+        .exec((err,arr) => {
+            res.send({csapatok: arr})
+        } )
 } )
 
 /*
