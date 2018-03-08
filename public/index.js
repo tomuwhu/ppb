@@ -40,6 +40,5 @@ angular
       $scope.setaktcsapat = (x) => {
          if ($scope.aktcsapat != x) $scope.aktcsapat = x
          else $scope.aktcsapat = null
-
       }
   } )
