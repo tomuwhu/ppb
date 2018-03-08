@@ -1,12 +1,12 @@
-<center><h3>Csapatok listája</h3>
+<h3>Csapatok listája</h3>
 <div class="w3-center">
       <div ng-repeat="csapati in csapatok track by $index">
-        <table  class="w3-striped w3-red"
+        <table  class="w3-striped w3-green"
                 style="margin: 0 auto;">
         <tr>
           <td ng-click="setaktcsapat( csapati.nev )"
               style="width:300px; text-align:left;"
-              class="pointer">  &nbsp; 
+              class="pointer">  &nbsp;
             {{csapati.nev}} &#8681;
           </td>
           <td class="pointer"

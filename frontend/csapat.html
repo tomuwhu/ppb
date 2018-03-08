@@ -1,26 +1,46 @@
-<center>
+<br>
+<div class="w3-container w3-light-gray w3-round-large" style="width: 470px;" align="center">
   <h3 ng-if="ujcsapat">Új csapat rögzítése</h3>
   <h3 ng-if="!ujcsapat">Csapat adatainak módosítása</h3>
-<form name="csapatform">
-  <input placeholder="Csapat neve" ng-model="csapat.nev" required>
-  <hr>
-  <div ng-repeat="jatekos in csapat.jatekosok track by $index">
-    <input  type="number"
-            placeholder="Mezszám"
-            ng-model="jatekos.mezszam"
-            style="width:50px;"
-            required>
-    <input  placeholder="Név"
-            ng-model="jatekos.nev"
-            ng-lostfocus="uj()"
-            required>
-  </div>
-  <hr>
-  <button ng-click="uj()">Új játékos</button>
-  <hr>
-  <a href="#!/">
-  <button ng-if="csapatform.$valid"
-          ng-click="kuld()">Mentés</button>
-  </a>
-</form>
-<br><br>
+    <form name="csapatform" class="w3-container w3-orange w3-round-large">
+      <br>
+      <input placeholder="Csapat neve" ng-model="csapat.nev" required>
+      <hr>
+      <table        style="width:90%; padding:20px;"
+                    cellspacing="4px;"
+                    class="w3-striped w3-white w3-round-large">
+      <tr           ng-repeat="jatekos in csapat.jatekosok track by $index">
+        <td         style="width:50px;">
+          <input    type="number"
+                    style="text-align:right;"
+                    class="szszi"
+                    placeholder="Mezszám"
+                    ng-model="jatekos.mezszam"
+                    required>
+        </td>
+        <td>
+          <input    placeholder="Név"
+                    class="szszi"
+                    ng-model="jatekos.nev"
+                    ng-lostfocus="uj()"
+                    required>
+        </td>
+      </tr>
+      </table>
+      <hr>
+      <button       ng-click="uj()"
+                    class="pointer">
+                    Új játékos
+      </button>
+      <hr>
+      <a href="#!/"><button ng-if="csapatform.$valid"
+                            ng-click="kuld()"
+                            class="pointer">
+                            Mentés
+                    </button></a>
+      <br>
+      <br>
+    </form>
+<br>
+</div>
+<br>

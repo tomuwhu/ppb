@@ -28,11 +28,11 @@
            placeholder='keresés az oldalon'
            ng-model="mitkeres"
            ng-change="keress()">
-    <div class="w3-bar-item w3-right">{{time | date: 'h: mm: ss'}}</div>
+    <div class="w3-bar-item w3-right">{{time | date: 'H: mm: ss'}}</div>
   </div>
   <div class="w3-container w3-gray">
     <div style='height:15px;'></div>
-    <div ng-view class="w3-container w3-white  w3-round-large"></div>
+    <div ng-view class="w3-container w3-white w3-round-large" align="center"></div>
     <div style='height:15px;'></div>
   </div>
 </body>
