@@ -18,6 +18,7 @@ app.get( '/backend', (req, res) => res.sendFile('main.html', frontend) )
 
 app.get( '/backend/ujcsapat', (req, res) => res.sendFile('csapat.html', frontend) )
 
+app.get( '/backend/esrogzurlap', (req, res) => res.sendFile('esrogz.html', frontend) )
 
 var Csapat = mongoose.model('csapat', {
     nev:         {type: String, trim:true},

@@ -1,6 +1,7 @@
 angular
   .module( 'a', ['ngRoute'] )
   .config($routeProvider => {
+      $routeProvider.when('/esrogz', { templateUrl : "/backend/esrogzurlap"})
       $routeProvider.when('/ujcsapat', { templateUrl : "/backend/ujcsapat"})
       $routeProvider.when('/', { templateUrl : "/backend" })
   })
@@ -30,5 +31,8 @@ angular
       $scope.kuld = () => {
             $http
               .post("/backend/csapatment", $scope.csapat)
+              .then( resp => {
+                  if (resp.data.ok) $scope.csapatok.push($scope.csapat)
+              })
       }
   } )

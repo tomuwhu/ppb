@@ -1,11 +1,13 @@
 <form name="csapatform">
   <input placeholder="Csapat neve" ng-model="csapat.nev">
   <br>
-  <div ng-repeat="jatekos in csapat.jatekosok">
+  <div ng-repeat="jatekos in csapat.jatekosok track by $index">
     <input placeholder="Mezszám" ng-model="jatekos.mezszam">
     <input placeholder="Név" ng-model="jatekos.nev" ng-lostfocus="uj()">
   </div>
   <button ng-click="uj()">Új játékos</button>
   <hr>
+  <a href="#!/">
   <button ng-click="kuld()">Mentés</button>
+  </a>
 </form>
