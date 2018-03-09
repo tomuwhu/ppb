@@ -20,6 +20,36 @@ app.get( '/backend/ujcsapat', (req, res) => res.sendFile('csapat.html', frontend
 
 app.get( '/backend/esrogzurlap', (req, res) => res.sendFile('esrogz.html', frontend) )
 
+var Meccs = mongoose.model('meccs', {
+    csapat1:     {type: String, trim:true},
+    csapat2:     {type: String, trim:true},
+    ehnip:       {type: String, trim:true},
+    ip:          {type: String, trim:true},
+    esemenyek:   [{
+        esip: {type: Number},
+        esemeny: {type: String, trim:true},
+        jatekos: {type: String, trim:true}
+    }]
+})
+app.post( '/backend/savemeccs', (req, res) => {
+    if (req.body._id) {
+      /*
+      Csapat.findById(req.body._id)
+            .update({
+              nev:  req.body.nev,
+              jatekosok: req.body.jatekosok
+            })
+            .exec((err,cucc) => {
+              res.send({ok: 2})
+            } )
+            */
+    } else {
+      var ujmeccs = new Meccs(req.body)
+      ujmeccs.save()
+      res.send({ok: 1})
+    }
+} )
+
 var Csapat = mongoose.model('csapat', {
     nev:         {type: String, trim:true},
     jatekosok:   [{

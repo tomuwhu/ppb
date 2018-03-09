@@ -1,11 +1,27 @@
 <h3>Események rögzítése</h3>
-<select ng-model="esemenyek.csapat1">
+<form name="esrogzform">
+<select ng-model="meccs.csapat1"
+        required>
     <option ng-repeat="csapat in csapatok">{{csapat.nev}}</option>
-</select> - <select ng-model="esemenyek.csapat2">
+</select> -
+<select ng-model="meccs.csapat2"
+        required>
     <option ng-repeat="csapat in csapatok">{{csapat.nev}}</option>
 </select>
+ :
+<input ng-model="meccs.ehn"
+       type="date"
+       min="2018-01-01"
+       max="2060-12-31"
+       required>
+<input type="time"
+       ng-model="meccs.ip"
+       required>
+<button ng-if = "esrogzform.$valid && (meccs.ip)"
+        ng-click = "meccsrogz()">Ment</button>
 <hr>
 <div ng-repeat="esemeny in esemenyek">
   <span>{{time | date: 'h: mm: ss'}}</span>
   <button> =< </button>
 </div>
+</form>
