@@ -20,8 +20,21 @@
 <button ng-if = "esrogzform.$valid && (meccs.ip)"
         ng-click = "meccsrogz()">Ment</button>
 <hr>
-<div ng-repeat="esemeny in esemenyek">
-  <span>{{time | date: 'h: mm: ss'}}</span>
-  <button> =< </button>
+<div ng-if = "meccs._id" ng-repeat="esemeny in esemenyek">
+  <div ng-if = "!meccs.kezdip">
+    Meccs kezdete: <span>{{time | date: 'H: mm: ss'}}</span>
+    <button ng-click="setkezdtime()"> Kezdés </button>
+  </div>
+  <div ng-if = "meccs.kezdip">
+    <span>{{meccs.kezdip | date: 'H: mm: ss'}}</span>
+    <div ng-repeat="esemeny in meccs.esemenyek">
+       <span>{{time - meccs.kezdip | date: 'mm: ss'}}</span>
+       <select>
+         <option>Gól</option>
+         <option>Csere</option>
+         <option>Büntetés</option>
+       </select>
+    </div>
+  </div>
 </div>
 </form>

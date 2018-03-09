@@ -50,5 +50,15 @@ angular
          console.log($scope.meccs)
          $http
             .post("/backend/savemeccs", $scope.meccs)
+            .then( resp => {
+                if (resp.data.ok!=2) {
+                  $scope.meccs._id = resp.data._id
+                  console.log( $scope.meccs._id )
+                }  
+            } )
+      }
+      $scope.setkezdtime = () => {
+          $scope.meccs.kezdip = $scope.time
+          $scope.meccs.esemenyek.push({})
       }
   } )

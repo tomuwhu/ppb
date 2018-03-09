@@ -24,7 +24,6 @@ var Meccs = mongoose.model('meccs', {
     csapat1:     {type: String, trim:true},
     csapat2:     {type: String, trim:true},
     ehnip:       {type: String, trim:true},
-    ip:          {type: String, trim:true},
     esemenyek:   [{
         esip: {type: Number},
         esemeny: {type: String, trim:true},
@@ -32,21 +31,21 @@ var Meccs = mongoose.model('meccs', {
     }]
 })
 app.post( '/backend/savemeccs', (req, res) => {
+    ip  = req.body.ip.split("T")
+    ehn = req.body.ehn.split("T")
+    console.log(ehn[0]+"T"+ip[1])
+    req.body.ehnip=ehn[0]+"T"+ip[1]
     if (req.body._id) {
-      /*
-      Csapat.findById(req.body._id)
-            .update({
-              nev:  req.body.nev,
-              jatekosok: req.body.jatekosok
-            })
+      Meccs.findById(req.body._id)
+            .update( req.body )
             .exec((err,cucc) => {
-              res.send({ok: 2})
+                res.send({ok: 2})
             } )
-            */
     } else {
       var ujmeccs = new Meccs(req.body)
-      ujmeccs.save()
-      res.send({ok: 1})
+      ujmeccs.save().then( (answ) => {
+          res.send( { _id: answ._id } )
+      } )
     }
 } )
 
