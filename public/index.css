@@ -1,6 +1,7 @@
 .pointer {
     cursor: pointer;
 }
+<<<<<<< HEAD
 .p150 {
     padding: 0 auto;
     cursor: pointer;
@@ -9,4 +10,10 @@
 .p150:hover {
     font-size: 160%;
     color:      red;
+=======
+.szszi {
+    width:  100%;
+    border: none;
+    background: transparent;
+>>>>>>> 1a36aec301f8830e3b8bd5b02f97c719c5cb812a
 }
