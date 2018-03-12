@@ -1,25 +1,12 @@
-<h3>Események rögzítése</h3>
-<form name="esrogzform">
-<select ng-model="meccs.csapat1"
-        required>
+<center><h3>Események rögzítése</h3>
+<select ng-model="esemenyek.csapat1">
     <option ng-repeat="csapat in csapatok">{{csapat.nev}}</option>
 </select> -
-<select ng-model="meccs.csapat2"
-        required>
+<select ng-model="esemenyek.csapat2">
     <option ng-repeat="csapat in csapatok">{{csapat.nev}}</option>
 </select>
- :
-<input ng-model="meccs.ehn"
-       type="date"
-       min="2018-01-01"
-       max="2060-12-31"
-       required>
-<input type="time"
-       ng-model="meccs.ip"
-       required>
-<button ng-if = "esrogzform.$valid && (meccs.ip)"
-        ng-click = "meccsrogz()">Ment</button>
 <hr>
+<<<<<<< HEAD
 <div ng-if = "meccs._id" ng-repeat="esemeny in esemenyek">
   <div ng-if = "!meccs.kezdip">
     Aktuális idő: <span>{{time | date: 'H: mm: ss'}}</span>
@@ -41,5 +28,17 @@
        </span>
     </div>
   </div>
+=======
+<div ng-repeat="esemeny in esemenyek"
+     style="height:50px;
+            text-align:left;
+            vertical-align:middle;
+            border:solid white;
+            background-color:#eeeeee;">
+  <span
+        style="font-size: 180%; width: 150px;">{{time | date: 'H: mm: ss'}}</span>
+  <span class="p150"> &#8612; </span>
+  <!-- Itt folytatjuk, remélem nem törölték le a táblát! -->
+>>>>>>> 27c28667733f2654bc2be573a0965588abed58a5
 </div>
-</form>
+<br>
