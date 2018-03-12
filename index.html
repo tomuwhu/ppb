@@ -22,10 +22,9 @@ angular
 		clientPromise.then(client => {
 			let db = client.service('mongodb', 'mongodb-atlas').db('p1')
 			client.login().then(()=>
-			  db.collection('thing').find({owner_id: client.authedId()}).limit(10).execute()
+			  db.collection('thing').find().limit(10).execute()
 			).then(docs => {
-			  //console.log("Found docs", docs[0].number)
-			  $scope.t = docs[0].number
+			  $scope.tomb = docs
 			}).catch(err => {
 			  //console.error(err)
 			})
@@ -36,4 +35,5 @@ angular
 <meta charset="utf-8">
 <body ng-app="a" ng-controller="c">
 <input ng-model="t" ng-change="f()">
+{{tomb}}
 </body>
