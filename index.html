@@ -6,15 +6,17 @@ angular
   .controller('c', ($scope, $interval) => {
 	const clientPromise = stitch.StitchClientFactory.create('tom-xxvtd')
 	$scope.f = () => {
-		clientPromise.then(client => {
-			let db = client.service('mongodb', 'mongodb-atlas').db('p1')
-			client.login().then(() => {
-			  console.log($scope.t)
-			  db.collection('thing').updateOne({owner_id: client.authedId()}, {$set:{number:$scope.t}}, {upsert:true})
-			}).catch(err => {
-			  console.error(err)
+		if ($scope.t>0) {
+			clientPromise.then(client => {
+				let db = client.service('mongodb', 'mongodb-atlas').db('p1')
+				client.login().then(() => {
+				  console.log($scope.t)
+				  db.collection('thing').updateOne({owner_id: client.authedId()}, {$set:{number:$scope.t}}, {upsert:true})
+				}).catch(err => {
+				  console.error(err)
+				})
 			})
-		})
+		}
 	}
 	$interval( () => {
 		clientPromise.then(client => {
