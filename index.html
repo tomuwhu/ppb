@@ -1,2 +1,13 @@
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js'></script>
+<script>
+angular
+  .module( 'a', [] )
+  .controller( 'c', ($scope) => {
+ 
+    $scope.t=1
+  } )
+</script>
 <meta charset="utf-8">
-Helló
+<body ng-app="a" ng-controller="c">
+Helló {{t}}
+</body>
