@@ -1,12 +1,21 @@
-menu = [ 'Delfin', 'Kutya','Farkas', 'Pingvin','Hello világ!', 'Krokodil' ].sort()
+
 angular
-  .module( 'a', ['ngRoute'] )
+  .module( 'a', ['ngRoute','ngMaterial','ngAnimate','ngAria','ngMessages'] )
   .config($routeProvider => {
-      menu.forEach( (v, k) => $routeProvider.when('/'+k, { templateUrl : "/backend/"+k}) )
-      $routeProvider.when("/", { templateUrl : "/backend" })
+      $routeProvider.when("/", { templateUrl : "/be" })
+      $routeProvider.when("/pr", { templateUrl : "/pr" })
+      $routeProvider.when("/reg", { templateUrl : "/regform" })      
   })
-  .controller( 'c', ($scope,$http,$interval) => {
+  .controller( 'c', ($scope, $http, $interval) => {
       $interval( () => $scope.time = new Date(), 100)
-      $scope.menu = menu
-      $scope.x = 5
+      $scope.vm = {
+            formData: {
+              email: '',
+             	password: ''
+            },
+            submit: () => {
+              $http
+                .post('/be',$scope.vm.formData)
+            }
+        }
   } )
