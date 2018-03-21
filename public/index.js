@@ -30,7 +30,7 @@ angular
             $http
               .post("/backend/csapatment", $scope.csapat)
               .then( resp => {
-                  $scope.csapat.jatekosok.sort( ( a, b ) => a.nev.localeCompare(b.nev) )
+                  $scope.csapat.jatekosok.sort( ( a, b ) => a.nev.localeCompare(b.nev, {lang:'hu', set: [UTF_8]}) )
                   if ( resp.data.ok == 1 ) $scope.csapatok.push( $scope.csapat )
               } )
       }
