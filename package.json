@@ -14,7 +14,8 @@
     "express": "^4.16.2",
     "express-es6-template-engine": "^2.0.2",
     "express-session": "^1.15.6",
-    "mongoose": "^4.13.9"
+    "mongoose": "^4.13.9",
+    "nodemon": "^1.17.2"
   },
   "repository": {
     "type": "git",

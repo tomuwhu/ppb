@@ -30,7 +30,7 @@ angular
             $http
               .post("/backend/csapatment", $scope.csapat)
               .then( resp => {
-                  $scope.csapat.jatekosok.sort( ( a, b ) => a.mezszam > b.mezszam ? -1 : 1 )
+                  $scope.csapat.jatekosok.sort( ( a, b ) => a.nev.localeCompare(b.nev) )
                   if ( resp.data.ok == 1 ) $scope.csapatok.push( $scope.csapat )
               } )
       }
@@ -54,7 +54,7 @@ angular
                 if (resp.data.ok!=2) {
                   $scope.meccs._id = resp.data._id
                   console.log( $scope.meccs._id )
-                }  
+                }
             } )
       }
       $scope.setkezdtime = () => {
