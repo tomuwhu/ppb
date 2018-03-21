@@ -5,6 +5,18 @@ angular
       $routeProvider.when( '/ujcsapat', { templateUrl : "/backend/ujcsapat" } )
       $routeProvider.when( '/', { templateUrl : "/backend" } )
   } )
+  .directive( "fr", () => { //<input type="file" fr="uf" /><pre>{{uf}}</pre>
+    return {
+      scope: { fr: "=" },
+      link: (sc, e) => e.bind( "change", chev => {
+            var reader = new FileReader()
+            reader.readAsDataURL(chev.target.files[0])
+            reader.onload = lev => sc.$apply( () => {
+                    sc.fr = window.atob(lev.target.result.split(',')[1])
+            } )
+      } )
+    }
+  } )
   .controller( 'c', ($scope,$http,$interval) => {
       $interval( ( ) => $scope.time = new Date( ), 100)
       $scope.csapatok = []
@@ -17,6 +29,7 @@ angular
           .post( "/backend/csapatok", { csnsz: $scope.mitkeres } )
           .then( resp => {
                 $scope.csapatok = resp.data.csapatok
+                $scope.csapatok.forEach( v => v.jatekosok.sort( ( a, b ) => a.nev.localeCompare(b.nev) ) )
           } )
       }
       $scope.keress( )
@@ -30,7 +43,7 @@ angular
             $http
               .post("/backend/csapatment", $scope.csapat)
               .then( resp => {
-                  $scope.csapat.jatekosok.sort( ( a, b ) => a.nev.localeCompare(b.nev, {lang:'hu', set: [UTF_8]}) )
+                  $scope.csapat.jatekosok.sort( ( a, b ) => a.nev.localeCompare(b.nev) )
                   if ( resp.data.ok == 1 ) $scope.csapatok.push( $scope.csapat )
               } )
       }
