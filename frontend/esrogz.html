@@ -1,0 +1,45 @@
+<h3>Események rögzítése</h3>
+<form name="esrogzform">
+<select ng-model="meccs.csapat1"
+        required>
+    <option ng-repeat="csapat in csapatok">{{csapat.nev}}</option>
+</select> -
+<select ng-model="meccs.csapat2"
+        required>
+    <option ng-repeat="csapat in csapatok">{{csapat.nev}}</option>
+</select>
+ :
+<input ng-model="meccs.ehn"
+       type="date"
+       min="2018-01-01"
+       max="2060-12-31"
+       required>
+<input type="time"
+       ng-model="meccs.ip"
+       required>
+<button ng-if = "esrogzform.$valid && (meccs.ip)"
+        ng-click = "meccsrogz()">Ment</button>
+<hr>
+<div ng-if = "meccs._id" ng-repeat="esemeny in esemenyek">
+  <div ng-if = "!meccs.kezdip">
+    Aktuális idő: <span>{{time | date: 'H: mm: ss'}}</span>
+    <button ng-click="setkezdtime()"> Kezdés </button>
+  </div>
+  <div ng-if = "meccs.kezdip">
+    Meccs kezdete: <span>{{meccs.kezdip | date: 'H: mm: ss'}}</span>
+    <div ng-repeat="esemeny in meccs.esemenyek">
+       <span ng-if="!esemeny.ip">
+         Új esemény: <span>{{time - meccs.kezdip | date: 'mm: ss'}}: </span>
+         <select ng-model="esemeny.tipus">
+           <option>Gól</option>
+           <option>Csere</option>
+           <option>Büntetés</option>
+         </select>
+         <select ng-if=" esemeny.tipus == 'Gól' ">
+           <option>
+         </select>
+       </span>
+    </div>
+  </div>
+</div>
+</form>
