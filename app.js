@@ -48,7 +48,7 @@ app.post( '/keres', (req,res) => {
             $or: [
                 { cim: new RegExp('^.*'+req.body.mitkeres+'.*$', "i") },
                 { szerzo: new RegExp('^.*'+req.body.mitkeres+'.*$', "i") },
-                { mufaj: new RegExp('^.*'+req.body.mitkeres+'.*$', "i") }  
+                { mufaj: new RegExp('^.*'+req.body.mitkeres+'.*$', "i") }
             ]
         })
         .sort({cim: -1})
