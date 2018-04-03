@@ -11,7 +11,6 @@ app .use(bodyParser.json()).use(cookieParser())
     }))
 mongoose.connect('mongodb://localhost/'+dbname, { useMongoClient: true })
 mongoose.Promise = global.Promise
-
 app.get( '/', (req, res) => res.sendFile('index.html', frontend) )
 
 app.get( '/backend', (req, res) => res.sendFile('main.html', frontend) )
